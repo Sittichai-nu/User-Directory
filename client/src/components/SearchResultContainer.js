@@ -7,10 +7,6 @@ import API from "../utils/API";
 class SearchResultContainer extends Component {
   state = {
     result: [],
-    filter: "",
-    filterBy: "lastName",
-    currentSort: "default",
-    sortField: ""
   };
   componentDidMount() {
     API.search()
@@ -30,63 +26,21 @@ class SearchResultContainer extends Component {
       })
       .catch(err => console.log(err));
   }
-  filterEmployees = (searchkey) => {
-    console.log(searchkey);
-    console.log(this.state.result);
-    var filterResult = this.state.result.filter(person => person.firstName === searchkey)
-    this.setState({
-      result: filterResult
-
-    })
-  }
-  handleFormSubmit = event => {
-    event.preventDefault();
-    const value = event.target.value;
-    const name = event.target.name;
-    //filter function here
-    this.filterEmployees(value);
-    this.setState({
-
-      [name]: value
-
-    });
-    this.filterEmployees(value);
-    this.filterEmployees(this.state.search);
-
-  };
-
-
-  handleInputChange = event => {
-    event.preventDefault();
-    console.log(event);
-    const value = event.target.value;
-    const name = event.target.name;
-
-    this.setState({
-      [name]: value
-    });
-
-  };
   render() {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-12">
-            <h2>Employee Directory</h2>
-          </div>
+          <h2>Employee Directory</h2>
         </div>
-        <div className="row">
-          <div className="searching">
-            <SearchForm
-              value={this.state.search}
-              handleInputChange={this.handleInputChange}
-              handleFormSubmit={this.handleFormSubmit}
-            />
-          </div>
+        <div className="searching">
+          <SearchForm
+            value={this.state.search}
+            handleInputChange={this.handleInputChange}
+            handleFormSubmit={this.handleFormSubmit}
+          />
         </div>
-        <SearchContainer 
-     
-         />
+        <SearchContainer
+        />
         <div>
           {[...this.state.result].map((item) =>
             <Card

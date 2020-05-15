@@ -7,9 +7,10 @@ const Card = props => {
                 <img alt={props.name} src={props.image} />
             </div>
             <div className="content">
-                    <span>name:{props.firstName}{props.lastName}</span>
-                    <span>phone:{props.phone}</span>
-                    <span>email:{props.email}</span>               
+                    <span>name{props.firstName}{props.lastName}</span>
+                    <span>phone{props.phone}</span>
+                    <span>email{props.email}</span>
+
             </div>
         </div>
     )
