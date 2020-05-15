@@ -7,13 +7,22 @@ const Card = props => {
                 <img alt={props.name} src={props.image} />
             </div>
             <div className="content">
-                    <span>name{props.firstName}{props.lastName}</span>
-                    <span>phone{props.phone}</span>
-                    <span>email{props.email}</span>
-
+                <ul>
+                    <li>
+                        <strong>Name:</strong> {props.firstName} {props.lastName}
+                    </li>
+                    <li>
+                        <strong>Phone:</strong> {props.phone}
+                    </li>
+                    <li>
+                        <strong>Email:</strong> {props.email}
+                    </li>
+                </ul>
             </div>
         </div>
     )
 }
 
 export default Card;
+
+
