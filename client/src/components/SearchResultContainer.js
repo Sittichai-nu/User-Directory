@@ -3,6 +3,8 @@ import SearchForm from "./SearchForm";
 import SearchContainer from "./SearchContainer"
 import Card from "./Card";
 import API from "../utils/API";
+import '../styles/style.css';
+
 
 class SearchResultContainer extends Component {
   state = {
@@ -29,9 +31,10 @@ class SearchResultContainer extends Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
-          <h2>Employee Directory</h2>
-        </div>
+      <div className="header">
+        <h1>Employee Directory</h1>
+      </div>
+
         <div className="searching">
           <SearchForm
             value={this.state.search}
