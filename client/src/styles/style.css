@@ -1,0 +1,22 @@
+body{
+    margin: auto 0;
+    padding: 0;
+}
+.header {
+    margin: auto 0;
+    width: 100%;
+    padding: 30px;
+    color: white;
+    background-color: rgb(16, 29, 66);
+    text-align: center;
+    border-bottom: 5px solid rgb(219, 22, 47);
+    margin-bottom: 10px;
+}
+.form-group{
+    text-align: center;
+}
+.form-control {
+    width: 20%;
+    text-align: center;
+    margin-left: 40%;
+}
