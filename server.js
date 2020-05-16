@@ -1,39 +1,24 @@
-/***************|
-|* DEPENDECIES *|
-|***************/
-/* GENERAL */
-// Utilities for working with file and directory paths
-const path = require('path');
-// Load enviroment variables from .env into process.env
-require('dotenv').config()
-/* WEB FRAMEWORKS */
-// lightweight web framework for node server
-const express = require('express');
-// Initialize express under app variable
-const app = express();
+const express = require("express");
+const path = require("path");
 const PORT = process.env.PORT || 3001;
-/* BODY PARSERS */
-// node.js body parsing middleware avaiable under req.body
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.text());
-app.use(bodyParser.urlencoded({ extended: false }));
-/* LOGGERS */
-/* morgan set to 'dev':
-	RED         Server Error Codes
-	YELLOW      Client Error Codes
-	CYAN        Redirection Codes
-	UNCOLORED   Other Codes         */
-const logger = require('morgan');
-app.use(logger('dev'));
-/*****************|
-|* SET UP ROUTES *| 
-|*****************/
-// Setup app to serve static files from React App depending on dev/prod
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static(path.join(__dirname, './client', 'build')));
+const app = express();
+
+// Define middleware here
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
 }
-/*********************************|
-|* LISTEN FOR CONNECTION ON PORT *| 
-|*********************************/
-app.listen(PORT, () => { console.log(`App listening on PORT: ${PORT}`) });
+
+// Define API routes here
+
+// Send every other request to the React app
+// Define any API routes before this runs
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+app.listen(PORT, () => {
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
+});
