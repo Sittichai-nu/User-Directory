@@ -14,9 +14,25 @@ body{
 }
 .form-group{
     text-align: center;
+    
 }
 .form-control {
+    margin: 2px;
     width: 20%;
     text-align: center;
-    margin-left: 40%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 10px;
+
+    
+}
+.btn{
+    margin: 2px;
+    color: white;
+    background-color: rgb(22, 39, 85);
+    padding: 11px;
+    font-size: 14px;
+    border-radius: 10px;
+
+
 }
